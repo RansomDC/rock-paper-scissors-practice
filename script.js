@@ -52,9 +52,9 @@ function whoWins(playerPlay, computerPlay) {
 //vicMess() provides a victory message based on what you played 
 function vicMess(playerPlay) {
     let message;
-    if (playerPlay = 'rock') {
+    if (playerPlay === 'rock') {
         message = "You won! Rock beats scissors!";
-    } else if (playerPlay = 'paper') {
+    } else if (playerPlay === 'paper') {
         message = "You won! Paper beats rock!";
     } else {
         message = "You won! Scissors beats paper!";
@@ -64,9 +64,9 @@ function vicMess(playerPlay) {
 
 //lossMess() provides a loss message based on what you played
 function lossMess(playerPlay) {
-    if (playerPlay = 'rock') {
+    if (playerPlay === 'rock') {
         message = "You lost! Paper beats rock!";
-    } else if (playerPlay = 'paper') {
+    } else if (playerPlay === 'paper') {
         message = "You lost! Scissors beats paper!";
     } else {
         message = "You lost! Rock beats scissors!";
@@ -75,7 +75,7 @@ function lossMess(playerPlay) {
 }
 
 
-//game(): initiate playround() five times, 
+//game(): initiate playround() five times, store the score of each player, and after all rounds print who won.
 function game() {
     let compScore = 0;
     let playerScore = 0;
@@ -93,7 +93,7 @@ function game() {
     if ((i === 4) && (playerScore > compScore)) {
         console.log("Great job! You won " + playerScore + " to " + compScore + "!");
     } else if ((i === 4) && (playerScore < compScore)) {
-        console.log("Bummber, the computer beat you " + compScore + " to " + playerScore + ".");
+        console.log("Bummer, the computer beat you " + compScore + " to " + playerScore + ".");
     } else if ((i === 4) && (playerScore === compScore)) {
         console.log("You tied with the computer. " + playerScore + " to " + compScore + ".");
     }
