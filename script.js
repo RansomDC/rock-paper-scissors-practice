@@ -1,10 +1,13 @@
 
-//Give each button an event so that when you click it it plays a round.
+
 
 const resultContainer = document.querySelector('.results');
 const buttons = document.querySelectorAll('button'); 
 const resultText = document.createElement('p');
+const playerSB = document.querySelector('.playerScore');
+const computerSB = document.querySelector('.computerScore');
 
+//Give each button an event so that when you click it it plays a round.
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         console.log(button.className);
@@ -13,23 +16,24 @@ buttons.forEach((button) => {
 });
 
 
-
-
-//playround(input, computerplay()): Take user input and computer input of two plays for a round of Rock, Paper, Scissors (RPS)
+//playround(input, computerplay()): Take user input and computer input for a round of Rock, Paper, Scissors (RPS)
 function playRound(playerPlay, computerPlay) {
-    let result;
+    let playerScore = 0;
+    let compScore = 0;
 
     if (getVictoryResults(playerPlay, computerPlay) === true) {
         vicMess(playerPlay);
+        playerSB.textContent = +playerSB.textContent +1;
 
     }else if (getVictoryResults(playerPlay, computerPlay) === false) {
         lossMess(playerPlay);
+        computerSB.textContent = +computerSB.textContent +1;
 
     } else {
         resultText.textContent = "You tied!";
         resultContainer.appendChild(resultText);
     }
-    return result;
+    
 }
 
 
