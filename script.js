@@ -1,11 +1,10 @@
-
-
-
 const resultContainer = document.querySelector('.results');
 const buttons = document.querySelectorAll('button'); 
 const resultText = document.createElement('p');
 const playerSB = document.querySelector('.playerScore');
 const computerSB = document.querySelector('.computerScore');
+const resetContainer = document.querySelector('.resetContainer'); 
+const roundResults = document.createElement('h1');
 
 //Give each button an event so that when you click it it plays a round.
 buttons.forEach((button) => {
@@ -20,20 +19,44 @@ buttons.forEach((button) => {
 function playRound(playerPlay, computerPlay) {
     let playerScore = 0;
     let compScore = 0;
+    
 
     if (getVictoryResults(playerPlay, computerPlay) === true) {
         vicMess(playerPlay);
         playerSB.textContent = +playerSB.textContent +1;
+        if ((+playerSB.textContent === 5) && (+computerSB.textContent < 5)) {
+            roundResults.textContent = "You have won best out of five games!";
+            resultContainer.appendChild(roundResults);
+            resetGame();
+        }
 
     }else if (getVictoryResults(playerPlay, computerPlay) === false) {
         lossMess(playerPlay);
         computerSB.textContent = +computerSB.textContent +1;
-
+        if ((+computerSB.textContent === 5) && (+playerSB.textContent < 5)) {
+            roundResults.textContent = "You have lost best out of five games!";
+            resultContainer.appendChild(roundResults);
+            resetGame();
+        }
     } else {
         resultText.textContent = "You tied!";
         resultContainer.appendChild(resultText);
     }
-    
+}
+
+//A function to generate a reset button
+function resetGame() {
+    const resetButton = document.createElement('button');
+    resetButton.textContent = "Would you like to try again?"
+    resetButton.addEventListener('click', () => {
+        resultText.textContent = "A rematch!? BEGIN!";
+        roundResults.remove();
+        playerSB.textContent = 0;
+        computerSB.textContent = 0;
+        resetButton.remove();
+
+    });
+    resetContainer.appendChild(resetButton);
 }
 
 
@@ -43,7 +66,7 @@ function computerPlay() {
     return RPS [Math.floor(Math.random() * 3)];
 }
 
-//Compare the two "plays". Return 1 if player was victorious, return 0 if computer was victorious.
+//Compare the two "plays". Return true if player was victorious, return false if computer was victorious.
 function getVictoryResults(playerPlay, computerPlay) {
     let gameResult;
     if (playerPlay === 'rock' && computerPlay === 'paper') {
@@ -89,32 +112,3 @@ function lossMess(playerPlay) {
     }
     resultContainer.appendChild(resultText);
 }
-
-
-//game(): initiate playround() five times, store the score of each player, and after all rounds print who won.
-//function game() {
-//    let compScore = 0;
-//    let playerScore = 0;
-//    let roundResult;
-//    for (let i = 0; i <5; i++) {
-//        roundResult = playRound(prompt("Please enter rock, paper, or scissors!"), computerPlay());
-//        if (roundResult === 1) {
-//            playerScore++;
-//         } else if (roundResult === 0) {
-//            compScore++;
-//        } else {
-//            
-//    }
-//
-//    if ((i === 4) && (playerScore > compScore)) {
-//        console.log("Great job! You won " + playerScore + " to " + compScore + "!");
-//    } else if ((i === 4) && (playerScore < compScore)) {
-//        console.log("Bummer, the computer beat you " + compScore + " to " + playerScore + ".");
-//    } else if ((i === 4) && (playerScore === compScore)) {
-//        console.log("You tied with the computer. " + playerScore + " to " + compScore + ".");
-//    }
-//}
-//}
-
-    //store the number of times you win and lose
-    //After all rounds print who won the round
