@@ -26,6 +26,7 @@ function playRound(playerPlay, computerPlay) {
         playerSB.textContent = +playerSB.textContent +1;
         if ((+playerSB.textContent === 5) && (+computerSB.textContent < 5)) {
             roundResults.textContent = "You have won best out of five games!";
+            roundResults.classList.add('addedText');
             resultContainer.appendChild(roundResults);
             resetGame();
         }
@@ -35,12 +36,15 @@ function playRound(playerPlay, computerPlay) {
         computerSB.textContent = +computerSB.textContent +1;
         if ((+computerSB.textContent === 5) && (+playerSB.textContent < 5)) {
             roundResults.textContent = "You have lost best out of five games!";
+            roundResults.classList.add('addedText');
             resultContainer.appendChild(roundResults);
+            
             resetGame();
         }
     } else {
-        resultText.textContent = "You tied!";
+        resultText.textContent = "A tie match! Choose again!";
         resultContainer.appendChild(resultText);
+        resultText.classList.add('addedText');
     }
 }
 

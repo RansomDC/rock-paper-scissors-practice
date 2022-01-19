@@ -1,10 +1,37 @@
 *{
-    border: 1px solid blue;
+    background-color: rgb(26, 33, 44);
+    color: wheat;
+    /*border: 1px solid blue;*/
     margin: 10px;
     padding: 5px;
 } 
 
+.header, .addedText, .resetContainer, .results, .score {
+    text-align: center;
+}
+
 .scores, .buttons {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+}
+
+button {
+    background-color: black;
+    font-size: large;
+    font-weight: bold;
+    border-radius: 25px;
+    padding: 20px;
+}
+
+.name {
+    font-weight: bold;
+}
+
+.score {
+    font-weight: bold;
+    font-size: xx-large;
+}
+
+.paper {
+    margin: 10px 80px;
 }
