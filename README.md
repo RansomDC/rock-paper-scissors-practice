@@ -1,4 +1,6 @@
-# rock-paper-scissors-practice
-A simple program to play rock, paper, scissors against the computer.
+# rock-paper-scissors-practice  
+1/15/22
 
-//1/15/22 Starting an updated version of the program that will have a user interface so that the user can click on buttons instead of entering answer into the console.
+This was a practice program for The Odin Project free online coding classes using HTML, CSS and JavaScript.
+
+This was a program to practice relatively simple logical statements and execution of different functions.
